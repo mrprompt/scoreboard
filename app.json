@@ -1,0 +1,20 @@
+{
+  "name": "scoreboard",
+  "description": "Contest Scoreboard API",
+  "repository": "https://github.com/mrprompt/scoreboard",
+  "keywords": [
+    "node",
+    "express",
+    "static"
+  ],
+  "addons": [
+    "newrelic",
+    "mongolab"
+  ],
+  "env": {
+    "ENV": {
+      "description": "Application environment",
+      "value": "production"
+    }
+  }
+}

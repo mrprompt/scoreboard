@@ -4,6 +4,8 @@ Contest Scoreboard API
 
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Issue count][issue-image]][issue-url] [![Coverage percentage][coverage-image]][coverage-url]
 
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/mrprompt/scoreboard/tree/master)
+
 ## License
 
 MIT © [Thiago Paes]()
