@@ -2,7 +2,7 @@ const request = require('supertest');
 const expect = require('expect.js');
 const app = require('../../src/app/index.js');
 
-describe('App', function () {
+describe('Info', function () {
   beforeEach(function () {
     this.server = app.server;
   });
@@ -11,11 +11,20 @@ describe('App', function () {
     this.server.close();
   });
 
-  it('Should get error on root route', function (done) {
+  it('Should get info collection', function (done) {
     request(this.server)
-      .get('/')
+      .get('/v1/info')
       .expect((res) => {
         expect(res.body).to.be.an(Array);
+      })
+      .end(done);
+  });
+
+  it('Should get info by id', function (done) {
+    request(this.server)
+      .get('/v1/info/1')
+      .expect((res) => {
+        expect(res.body).to.be.an(Object);
       })
       .end(done);
   });

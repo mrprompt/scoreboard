@@ -1,4 +1,4 @@
-# devgrid-scoreboard
+# scoreboard
 
 Contest Scoreboard API
 
