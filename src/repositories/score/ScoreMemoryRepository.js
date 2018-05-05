@@ -1,4 +1,5 @@
 const BaseRepository = require('../BaseRepository.js');
+const cuid = require('cuid');
 
 module.exports = class ScoreMemoryRepository extends BaseRepository {
   constructor(infos) {
@@ -6,7 +7,7 @@ module.exports = class ScoreMemoryRepository extends BaseRepository {
 
     let data = infos || [
       {
-        id: '1',
+        id: 'cjgt16uo90001ua50jv91fy8u',
         score: [
           [1],
           [1, 2, 10, 'I'],
@@ -33,7 +34,15 @@ module.exports = class ScoreMemoryRepository extends BaseRepository {
     };
 
     this.post = (score) => {
-      data.push(score);
+      data.push({ id: cuid(), ...score });
+
+      return this.Promise.resolve(data);
+    };
+
+    this.postById = (id, score) => {
+      const scores = data.find(i => i.id === id);
+
+      scores.score.push(score);
 
       return this.Promise.resolve(data);
     };
