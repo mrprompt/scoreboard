@@ -1,38 +1,55 @@
 const expect = require('expect.js');
 const GistRepository = require('../../../../src/repositories/gist/GistRepository');
 
-xdescribe('GistRepository', function () {
+describe('GistRepository', function () {
   beforeEach(function () {
-    this.gistClient = {
-      list: () => [],
-      get: (id) => [id],
-      delete: (id) => {},
+    const client = {
+      list: (callback) => {
+        callback(null, []);
+      },
+      get: (id, callback) => {
+        callback(null, { id });
+      },
+      create: (gist, callback) => {
+        callback(null, gist);
+      },
+      delete: (id, callback) => {
+        callback(null, { id });
+      },
     };
-    this.repository = new GistRepository(this.gistClient);
+
+    this.repository = new GistRepository(client);
   });
 
   it('Should get all gists', function () {
     return this.repository.get()
-      .then((gists) => { expect(gists).to.greaterThan(0); });
+      .then((gists) => { expect(gists.length).to.be.eql(0); });
   });
 
   it('Should get gist by id', function () {
     return this.repository.getById('1')
-      .then((score) => { expect(score).to.eql(this.scores[0]); });
+      .then((gist) => { expect(gist.id).to.be.eql(1); });
   });
 
   it('Should insert gist', function () {
-    const score = {
-      id: '2',
-      score: 'bla',
+    const gist = {
+      description: 'the description for this gist',
+      public: true,
+      files: {
+        'file1.txt': {
+          content: 'String file contents',
+        },
+      },
     };
-    const expected = [...this.scores, score];
-    return this.repository.post(score)
-      .then((scores) => { expect(scores).to.eql(expected); });
+
+    const expected = gist;
+
+    return this.repository.post(gist)
+      .then((gists) => { expect(gists).to.eql(expected); });
   });
 
   it('Should delete gist', function () {
     return this.repository.del('1')
-      .then((scores) => { expect(scores).to.have.length(0); });
+      .then((gist) => { expect(gist).to.have.property('id'); });
   });
 });
