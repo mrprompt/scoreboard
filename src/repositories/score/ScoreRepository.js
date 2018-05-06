@@ -1,7 +1,7 @@
 const BaseRepository = require('../BaseRepository.js');
 const cuid = require('cuid');
 
-module.exports = class ScoreMemoryRepository extends BaseRepository {
+module.exports = class ScoreRepository extends BaseRepository {
   constructor(infos) {
     super();
 

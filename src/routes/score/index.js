@@ -1,5 +1,5 @@
 const Controller = require('../../controllers/ScoreController');
-const Repository = require('../../repositories/score/ScoreMemoryRepository');
+const Repository = require('../../repositories/score/ScoreRepository');
 
 const repository = new Repository();
 

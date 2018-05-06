@@ -1,12 +1,12 @@
 const expect = require('expect.js');
-const GistMemoryRepository = require('../../../../src/repositories/gist/GistMemoryRepository');
+const ScoreRepository = require('../../../../src/repositories/score/ScoreRepository');
 
-describe('GistMemoryRepository', function () {
+describe('ScoreRepository', function () {
   beforeEach(function () {
     this.scores = [
       { id: '1', score: 'some score' },
     ];
-    this.repository = new GistMemoryRepository(this.scores);
+    this.repository = new ScoreRepository(this.scores);
   });
 
   it('Should get all score', function () {
