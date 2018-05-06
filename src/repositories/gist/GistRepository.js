@@ -34,6 +34,20 @@ module.exports = class GistRepository extends BaseRepository {
       return deferred.promise;
     };
 
+    this.getComments = (id) => {
+      const deferred = this.defer();
+
+      this.client.comments(id, (err, result) => {
+        if (err) {
+          return deferred.reject(err);
+        }
+
+        return deferred.resolve(result);
+      });
+
+      return deferred.promise;
+    };
+
     this.post = (gist) => {
       const deferred = this.defer();
 

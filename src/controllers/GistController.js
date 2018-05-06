@@ -14,6 +14,12 @@ module.exports = class GistController {
         .then(next)
         .catch(data => res.send(data));
 
+    this.getComments = (req, res, next) =>
+      this.repository.getComments()
+        .then(data => res.send(data))
+        .then(next)
+        .catch(data => res.send(data));
+
     this.post = (req, res, next) =>
       this.repository.post(req.body)
         .then(data => res.send(data))

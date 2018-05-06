@@ -20,9 +20,18 @@ describe('Gist', function () {
       .end(done);
   });
 
+  it('Should get gist comments collection', function (done) {
+    request(this.server)
+      .get('/v1/gist/7588134dd98acebb52b9fea104e02665/comments')
+      .expect((res) => {
+        expect(res.body).to.be.an(Array);
+      })
+      .end(done);
+  });
+
   it('Should get gist by id', function (done) {
     request(this.server)
-      .get('/v1/gist/1')
+      .get('/v1/gist/7588134dd98acebb52b9fea104e02665')
       .expect((res) => {
         expect(res.body).to.be.an(Object);
       })

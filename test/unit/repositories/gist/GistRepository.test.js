@@ -16,6 +16,9 @@ describe('GistRepository', function () {
       delete: (id, callback) => {
         callback(null, { id });
       },
+      comments: (id, callback) => {
+        callback(null, [{ id }]);
+      },
     };
 
     this.repository = new GistRepository(client);
@@ -51,5 +54,10 @@ describe('GistRepository', function () {
   it('Should delete gist', function () {
     return this.repository.del('1')
       .then((gist) => { expect(gist).to.have.property('id'); });
+  });
+
+  it('Should get comments from gist', function () {
+    return this.repository.getComments('1')
+      .then((gist) => { expect(gist).to.be.an('array'); });
   });
 });
