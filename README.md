@@ -4,10 +4,19 @@ Contest Scoreboard API
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/mrprompt/scoreboard/tree/master)
 
-
 ## Before Deploy
 
 To use gist integration, first needed create a GitHub [personal access token](https://github.com/settings/tokens/new).
+
+## End points
+
+### Score
+
+| Description | HTTP Verb | Uri           |
+| List        | GET       | ```/v1/score```
+| Get Single  | GET       | ```/v1/score/:id```
+| Delete      | DELETE    | ```/v1/score/:id```
+| Add         | POST      | ```/v1/score```
 
 ## License
 
