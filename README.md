@@ -6,7 +6,8 @@ Contest Scoreboard API
 
 ## Before Deploy
 
-To use gist integration, first needed create a GitHub [personal access token](https://github.com/settings/tokens/new).
+To use gist integration, first needed create a GitHub [personal access token](https://github.com/settings/tokens/new), and set his value in
+`.env` file as defined in `.env.example`. You can set as environment variable too if you don want create a `.env` file.
 
 ## End points
 
@@ -18,6 +19,22 @@ To use gist integration, first needed create a GitHub [personal access token](ht
 | Get Single  | GET       | `/v1/score/:id`       |
 | Delete      | DELETE    | `/v1/score/:id`       |
 | Add         | POST      | `/v1/score`           |
+| Create Gist | POST      | `/v1/score/:id/gist`  |
+
+### Gist
+
+| Description | HTTP Verb | Uri                     |
+| ----------- | --------- | ----------------------- |
+| List        | GET       | `/v1/gist`              |
+| Get Single  | GET       | `/v1/gist/:id`          |
+| Delete      | DELETE    | `/v1/gist/:id`          |
+| Add         | POST      | `/v1/gist`              |
+| Comments    | POST      | `/v1/gist/:id/comments` |
+
+## IMPORTANT
+
+All information saved in score end-points is volatile and losted after application reboot. 
+If you need save the score permanently, create a gist.
 
 ## License
 

@@ -4,7 +4,7 @@ const GistClient = require('../../helper/gist-client.mock');
 
 describe('GistRepository', function () {
   beforeEach(function () {
-    this.repository = new GistRepository(GistClient);
+    this.repository = new GistRepository(new GistClient());
   });
 
   it('Should get all gists', function () {
@@ -17,10 +17,10 @@ describe('GistRepository', function () {
       .then((gist) => { expect(gist).to.have.property('id'); });
   });
 
-  xit('Should insert gist', function () {
+  it('Should insert gist', function () {
     const gist = {
       description: 'the description for this gist',
-      public: true,
+      public: false,
       files: {
         'file1.txt': {
           content: 'String file contents',
@@ -28,13 +28,11 @@ describe('GistRepository', function () {
       },
     };
 
-    const expected = gist;
-
     return this.repository.post(gist)
-      .then((gists) => { expect(gists).to.eql(expected); });
+      .then((result) => { expect(result).to.have.property('id'); });
   });
 
-  xit('Should delete gist', function () {
+  it('Should delete gist', function () {
     return this.repository.del('7a0e93fdb0c8673bd6e9e7c5274dd32a')
       .then((gist) => { expect(gist).to.have.property('id'); });
   });

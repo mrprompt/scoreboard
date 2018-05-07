@@ -1,8 +1,8 @@
 const BaseRepository = require('../BaseRepository.js');
 
 module.exports = class GistRepository extends BaseRepository {
-  constructor() {
-    super();
+  constructor(GistClient) {
+    super(GistClient);
 
     this.get = () => {
       const deferred = this.defer();
