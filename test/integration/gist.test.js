@@ -3,6 +3,10 @@ const expect = require('expect.js');
 const app = require('../../src/app/index.js');
 
 describe('Gist', function () {
+  before(function() {
+    this.timeout(10000);
+  });
+
   beforeEach(function () {
     this.server = app.server;
   });

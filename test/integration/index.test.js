@@ -15,7 +15,7 @@ describe('App', function () {
     request(this.server)
       .get('/')
       .expect((res) => {
-        expect(res.body).to.be.an(Array);
+        expect(res.body).to.be.an(Object);
       })
       .end(done);
   });
