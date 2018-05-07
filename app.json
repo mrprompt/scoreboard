@@ -7,10 +7,7 @@
     "express",
     "static"
   ],
-  "addons": [
-    "newrelic",
-    "mongolab"
-  ],
+  "addons": [],
   "env": {
     "ENV": {
       "description": "Application environment",
