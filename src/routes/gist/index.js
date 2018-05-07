@@ -1,11 +1,7 @@
-const OctoNode = require('octonode');
 const Controller = require('../../controllers/GistController');
 const Repository = require('../../repositories/gist/GistRepository');
 
-const token = process.env.GITHUB_TOKEN || '';
-const gistClient = OctoNode.client(token).gist();
-
-const repository = new Repository(gistClient);
+const repository = new Repository();
 
 const controller = new Controller(repository);
 

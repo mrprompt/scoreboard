@@ -1,10 +1,8 @@
 const BaseRepository = require('../BaseRepository.js');
 
 module.exports = class GistRepository extends BaseRepository {
-  constructor(gistClient) {
+  constructor() {
     super();
-
-    this.client = gistClient;
 
     this.get = () => {
       const deferred = this.defer();
@@ -65,7 +63,7 @@ module.exports = class GistRepository extends BaseRepository {
     this.del = (id) => {
       const deferred = this.defer();
 
-      gistClient.delete(id, (err, result) => {
+      this.client.delete(id, (err, result) => {
         if (err) {
           return deferred.reject(err);
         }

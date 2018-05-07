@@ -2,10 +2,10 @@ const BaseRepository = require('../BaseRepository.js');
 const cuid = require('cuid');
 
 module.exports = class ScoreRepository extends BaseRepository {
-  constructor(scores) {
+  constructor() {
     super();
 
-    let data = scores || [
+    let data = [
       {
         id: 'cjgt16uo90001ua50jv91fy8u',
         score: `1
