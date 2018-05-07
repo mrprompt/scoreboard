@@ -12,11 +12,12 @@ To use gist integration, first needed create a GitHub [personal access token](ht
 
 ### Score
 
-| Description | HTTP Verb | Uri           |
-| List        | GET       | ```/v1/score```
-| Get Single  | GET       | ```/v1/score/:id```
-| Delete      | DELETE    | ```/v1/score/:id```
-| Add         | POST      | ```/v1/score```
+| Description | HTTP Verb | Uri                   |
+| ----------- | --------- | --------------------- |
+| List        | GET       | `/v1/score`           |
+| Get Single  | GET       | `/v1/score/:id`       |
+| Delete      | DELETE    | `/v1/score/:id`       |
+| Add         | POST      | `/v1/score`           |
 
 ## License
 
