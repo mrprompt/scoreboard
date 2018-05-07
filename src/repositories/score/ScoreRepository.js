@@ -8,12 +8,7 @@ module.exports = class ScoreRepository extends BaseRepository {
     let data = [
       {
         id: 'cjgt16uo90001ua50jv91fy8u',
-        score: `1
-          1 2 10 I
-          3 1 11 C
-          1 2 19 R
-          1 2 21 C
-          1 1 25 C`,
+        score: '1\n1 2 10 I\n3 1 11 C\n1 2 19 R\n1 2 21 C\n1 1 25 C',
       },
     ];
 
@@ -28,7 +23,9 @@ module.exports = class ScoreRepository extends BaseRepository {
     this.getById = (id) => {
       const result = data.find(i => i.id === id);
 
-      return this.Promise.resolve(result);
+      const contests = result.score.split('\n');
+
+      return this.Promise.resolve({ contests, ...result });
     };
 
     this.post = (score) => {
@@ -44,9 +41,27 @@ module.exports = class ScoreRepository extends BaseRepository {
     };
 
     this.gist = (id) => {
-      const result = data.find(i => i.id === id);
+      const score = data.find(i => i.id === id);
+      const deferred = this.defer();
+      const gist = {
+        description: `Score #${id}`,
+        public: false,
+        files: {
+          'score.json': {
+            content: JSON.stringify(score),
+          },
+        },
+      };
 
-      return this.Promise.resolve(result);
+      this.client.create(gist, (err, result) => {
+        if (err) {
+          return deferred.reject(err);
+        }
+
+        return deferred.resolve(result);
+      });
+
+      return deferred.promise;
     };
   }
 };
