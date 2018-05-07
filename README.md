@@ -93,4 +93,4 @@ If you need save the score permanently, create a gist.
 
 ## License
 
-MIT © [Thiago Paes]()
+MIT © [Thiago Paes](https://www.mrprompt.com.br)
