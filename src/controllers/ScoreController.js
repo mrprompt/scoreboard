@@ -17,8 +17,8 @@ module.exports = class ScoreController {
         .then(data => res.send(data))
         .then(next);
 
-    this.postById = (req, res, next) =>
-      this.repository.postById(req.params.id, req.body)
+    this.gist = (req, res, next) =>
+      this.repository.gist(req.params.id, req.body)
         .then(data => res.send(data))
         .then(next);
 
