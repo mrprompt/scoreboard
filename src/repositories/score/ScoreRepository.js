@@ -69,7 +69,7 @@ module.exports = class ScoreRepository extends BaseRepository {
         public: false,
         files: {
           'score.json': {
-            content: JSON.stringify(score),
+            content: `${score.cases}\n${score.score.join('\n')}`,
           },
         },
       };
