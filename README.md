@@ -1,5 +1,7 @@
 # Contest Scoreboard API
 
+[![Build Status](https://travis-ci.org/mrprompt/scoreboard.svg?branch=master)](https://travis-ci.org/mrprompt/scoreboard)
+
 Want to complete in the ACM ICPC? Then you had better know how to keeop score!
 Contestants are ranked first by the number of problems solved (the more the better),
 then by decreasins amounts of penalty time. If two or more constants are tied in
