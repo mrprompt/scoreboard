@@ -1,6 +1,8 @@
 # Contest Scoreboard API
 
 [![Build Status](https://travis-ci.org/mrprompt/scoreboard.svg?branch=master)](https://travis-ci.org/mrprompt/scoreboard)
+[![Maintainability](https://api.codeclimate.com/v1/badges/a2c713a6e190acead151/maintainability)](https://codeclimate.com/github/mrprompt/scoreboard/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/a2c713a6e190acead151/test_coverage)](https://codeclimate.com/github/mrprompt/scoreboard/test_coverage)
 
 Want to complete in the ACM ICPC? Then you had better know how to keeop score!
 Contestants are ranked first by the number of problems solved (the more the better),
