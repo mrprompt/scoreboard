@@ -7,6 +7,7 @@ describe('GistController', function () {
       get: () => Promise.resolve(true),
       getById: () => Promise.resolve(true),
       post: data => Promise.resolve(data),
+      getComments: data => Promise.resolve(data),
       del: () => Promise.resolve(true),
     };
 
@@ -26,6 +27,10 @@ describe('GistController', function () {
 
   it('Should call getById', function () {
     return this.controller.getById(this.req, this.res, this.next);
+  });
+
+  it('Should call getComments', function () {
+    return this.controller.getComments(this.req, this.res, this.next);
   });
 
   it('Should call post', function () {

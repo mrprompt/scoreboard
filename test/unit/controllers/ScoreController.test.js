@@ -7,6 +7,7 @@ describe('ScoreController', function () {
       get: () => Promise.resolve(true),
       getById: () => Promise.resolve(true),
       post: data => Promise.resolve(data),
+      gist: data => Promise.resolve(data),
       del: () => Promise.resolve(true),
     };
 
@@ -44,5 +45,9 @@ describe('ScoreController', function () {
 
   it('Should call del', function () {
     return this.controller.del(this.req, this.res, this.next);
+  });
+
+  it('Should call gist', function () {
+    return this.controller.gist(this.req, this.res, this.next);
   });
 });
