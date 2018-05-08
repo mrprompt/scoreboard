@@ -5,6 +5,8 @@ module.exports = class ScoreRepository extends BaseRepository {
   constructor(GistClient) {
     super(GistClient);
 
+    const PENALTY_TIME = 20;
+
     let data = [
       {
         id: 'cjgt16uo90001ua50jv91fy8u',
@@ -99,11 +101,11 @@ module.exports = class ScoreRepository extends BaseRepository {
 
         if (team in results) {
           const scoreOld = results[team].split(' ');
-          const newTime = +scoreOld[2] + (letter === 'I' ? 20 : time);
+          const newTime = +scoreOld[2] + (letter === 'I' ? PENALTY_TIME : time);
 
           results[team] = `${team} ${Math.max(solutions, scoreOld[1])} ${newTime}`;
         } else {
-          const newTime = letter === 'I' ? 20 : time;
+          const newTime = letter === 'I' ? PENALTY_TIME : time;
 
           results[team] = `${team} ${solutions} ${newTime}`;
         }
