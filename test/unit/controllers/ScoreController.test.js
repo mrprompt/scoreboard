@@ -29,8 +29,16 @@ describe('ScoreController', function () {
   });
 
   it('Should call post', function () {
-    const req = { body: { id: '2' } };
-    const res = { send: (data) => { expect(data).to.eql(req.body); } };
+    const req = { body: { content: '2' } };
+    const res = { send: (data) => { expect(data).to.eql(2); } };
+
+    return this.controller.post(req, res, this.next);
+  });
+
+  it('Should call post without content throws error', function () {
+    const req = { body: { } };
+    const res = { send: (data) => { expect(data).to.be.a('undefined'); } };
+
     return this.controller.post(req, res, this.next);
   });
 

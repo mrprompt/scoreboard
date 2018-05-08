@@ -17,15 +17,15 @@ describe('ScoreRepository', function () {
       .then((score) => { expect(score).to.be.a('object'); });
   });
 
-  it('Should insert score', function () {
-    const score = {
-      score: `1
-          1 2 10 I
-          3 1 11 C
-          1 2 19 R
-          1 2 21 C
-          1 1 25 C`,
-    };
+  it('Should insert single score', function () {
+    const score = '2\n1 2 10 I\n3 1 11 C\n1 2 19 R\n1 2 21 C\n1 1 25 C';
+
+    return this.repository.post(score)
+      .then((scores) => { expect(scores).to.be.a('array'); });
+  });
+
+  it('Should insert many scores', function () {
+    const score = '2\n1 2 10 I\n3 1 11 C\n1 2 19 R\n1 2 21 C\n1 1 25 C\n\n3\n1 2 10 I\n3 1 11 C\n1 2 19 R\n1 2 21 C\n1 1 25 C';
 
     return this.repository.post(score)
       .then((scores) => { expect(scores).to.be.a('array'); });

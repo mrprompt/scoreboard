@@ -8,7 +8,18 @@ module.exports = class ScoreRepository extends BaseRepository {
     let data = [
       {
         id: 'cjgt16uo90001ua50jv91fy8u',
-        score: '1\n1 2 10 I\n3 1 11 C\n1 2 19 R\n1 2 21 C\n1 1 25 C',
+        cases: 1,
+        score: [
+          '1 2 10 I',
+          '3 1 11 C',
+          '1 2 19 R',
+          '1 2 21 C',
+          '1 1 25 C',
+        ],
+        contests: [
+          '1 2 66',
+          '3 1 11',
+        ],
       },
     ];
 
@@ -23,13 +34,23 @@ module.exports = class ScoreRepository extends BaseRepository {
     this.getById = (id) => {
       const result = data.find(i => i.id === id);
 
-      const contests = result.score.split('\n');
-
-      return this.Promise.resolve({ contests, ...result });
+      return this.Promise.resolve(result);
     };
 
     this.post = (score) => {
-      data.push({ id: cuid(), ...score });
+      const scores = score.split('\n\n');
+
+      scores.forEach((row) => {
+        const rows = row.split('\n');
+        const newScore = {
+          id: cuid(),
+          cases: rows.shift(),
+          score: rows,
+          contests: this.calculate(rows),
+        };
+
+        data.push(newScore);
+      });
 
       return this.Promise.resolve(data);
     };
@@ -62,6 +83,35 @@ module.exports = class ScoreRepository extends BaseRepository {
       });
 
       return deferred.promise;
+    };
+
+    this.calculate = (contests) => {
+      const test = contests.filter(c => c.match(/(C|I)$/i));
+
+      const results = {};
+
+      test.forEach((t) => {
+        const tmp = t.split(' ');
+        const team = +tmp[0];
+        const solutions = +tmp[1];
+        const time = +tmp[2];
+        const letter = tmp[3];
+
+        if (team in results) {
+          const scoreOld = results[team].split(' ');
+          const newTime = +scoreOld[2] + (letter === 'I' ? time * 2 : time);
+
+          results[team] = `${team} ${Math.max(solutions, scoreOld[1])} ${newTime}`;
+        } else {
+          const newTime = letter === 'I' ? time * 2 : time;
+
+          results[team] = `${team} ${solutions} ${newTime}`;
+        }
+
+        return t;
+      });
+
+      return Object.values(results);
     };
   }
 };
