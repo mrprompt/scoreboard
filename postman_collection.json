@@ -1,0 +1,247 @@
+{
+	"info": {
+		"_postman_id": "ab45eee7-dbb2-442a-8cb7-d1cba319c007",
+		"name": "Score Board",
+		"description": "Score board api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "gist.list",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://acm-icpc-scoreboard.herokuapp.com/v1/gist",
+					"protocol": "https",
+					"host": [
+						"acm-icpc-scoreboard",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"v1",
+						"gist"
+					]
+				},
+				"description": "list all gists"
+			},
+			"response": []
+		},
+		{
+			"name": "gist.create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"description\": \"the description for this gist\",\n  \"public\": true,\n  \"files\": {\n    \"foo.txt\": {\n      \"content\": \"String file contents\"\n    }\n  }\n}"
+				},
+				"url": {
+					"raw": "https://acm-icpc-scoreboard.herokuapp.com/v1/gist",
+					"protocol": "https",
+					"host": [
+						"acm-icpc-scoreboard",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"v1",
+						"gist"
+					]
+				},
+				"description": "create a gist"
+			},
+			"response": []
+		},
+		{
+			"name": "gist.open",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"description\": \"the description for this gist\",\n  \"public\": true,\n  \"files\": {\n    \"foo.txt\": {\n      \"content\": \"String file contents\"\n    }\n  }\n}"
+				},
+				"url": {
+					"raw": "https://acm-icpc-scoreboard.herokuapp.com/v1/gist/6679762233f329972785f0e38920b114",
+					"protocol": "https",
+					"host": [
+						"acm-icpc-scoreboard",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"v1",
+						"gist",
+						"6679762233f329972785f0e38920b114"
+					]
+				},
+				"description": "open a gist"
+			},
+			"response": []
+		},
+		{
+			"name": "gist.comments",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"description\": \"the description for this gist\",\n  \"public\": true,\n  \"files\": {\n    \"foo.txt\": {\n      \"content\": \"String file contents\"\n    }\n  }\n}"
+				},
+				"url": {
+					"raw": "https://acm-icpc-scoreboard.herokuapp.com/v1/gist/6679762233f329972785f0e38920b114/comments",
+					"protocol": "https",
+					"host": [
+						"acm-icpc-scoreboard",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"v1",
+						"gist",
+						"6679762233f329972785f0e38920b114",
+						"comments"
+					]
+				},
+				"description": "show comments from a gist"
+			},
+			"response": []
+		},
+		{
+			"name": "score.list",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://acm-icpc-scoreboard.herokuapp.com/v1/score",
+					"protocol": "https",
+					"host": [
+						"acm-icpc-scoreboard",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"v1",
+						"score"
+					]
+				},
+				"description": "list all scores"
+			},
+			"response": []
+		},
+		{
+			"name": "score.open",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "https://acm-icpc-scoreboard.herokuapp.com/v1/score/cjgt16uo90001ua50jv91fy8u",
+					"protocol": "https",
+					"host": [
+						"acm-icpc-scoreboard",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"v1",
+						"score",
+						"cjgt16uo90001ua50jv91fy8u"
+					]
+				},
+				"description": "open a single score"
+			},
+			"response": []
+		},
+		{
+			"name": "score.create",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"content\": \"2\\n1 2 10 I\\n3 1 11 C\\n1 2 19 R\\n1 2 21 C\\n1 1 25 C\\n\\n3\\n1 2 30 I\\n3 1 11 C\\n1 2 29 R\\n1 2 21 C\\n1 1 15 C\"\n}"
+				},
+				"url": {
+					"raw": "https://acm-icpc-scoreboard.herokuapp.com/v1/score",
+					"protocol": "https",
+					"host": [
+						"acm-icpc-scoreboard",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"v1",
+						"score"
+					]
+				},
+				"description": "create a score"
+			},
+			"response": []
+		},
+		{
+			"name": "score.gist.create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "https://acm-icpc-scoreboard.herokuapp.com/v1/score/cjgt16uo90001ua50jv91fy8u/gist",
+					"protocol": "https",
+					"host": [
+						"acm-icpc-scoreboard",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"v1",
+						"score",
+						"cjgt16uo90001ua50jv91fy8u",
+						"gist"
+					]
+				},
+				"description": "create a gist from score"
+			},
+			"response": []
+		}
+	]
+}
