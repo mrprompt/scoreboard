@@ -86,11 +86,11 @@ module.exports = class ScoreRepository extends BaseRepository {
     };
 
     this.calculate = (contests) => {
-      const test = contests.filter(c => c.match(/(C|I)$/i));
+      const validScores = contests.filter(c => c.match(/(C|I)$/i));
 
       const results = {};
 
-      test.forEach((t) => {
+      validScores.forEach((t) => {
         const tmp = t.split(' ');
         const team = +tmp[0];
         const solutions = +tmp[1];
@@ -99,11 +99,11 @@ module.exports = class ScoreRepository extends BaseRepository {
 
         if (team in results) {
           const scoreOld = results[team].split(' ');
-          const newTime = +scoreOld[2] + (letter === 'I' ? time * 2 : time);
+          const newTime = +scoreOld[2] + (letter === 'I' ? 20 : time);
 
           results[team] = `${team} ${Math.max(solutions, scoreOld[1])} ${newTime}`;
         } else {
-          const newTime = letter === 'I' ? time * 2 : time;
+          const newTime = letter === 'I' ? 20 : time;
 
           results[team] = `${team} ${solutions} ${newTime}`;
         }
